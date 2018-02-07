@@ -53,7 +53,7 @@ public class Prodotti extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}else{
+		} else {
 			response.sendRedirect("Home");
 		}
 	}

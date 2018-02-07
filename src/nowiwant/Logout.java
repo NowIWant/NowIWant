@@ -51,7 +51,7 @@ public class Logout extends HttpServlet {
 		/*
 		 * String page = request.getParameter("page"); if (page == null) {
 		 */
-		//String page = request.getContextPath() + "/index.jsp";
+		// String page = request.getContextPath() + "/index.jsp";
 		// }
 		response.sendRedirect("Home");
 	}

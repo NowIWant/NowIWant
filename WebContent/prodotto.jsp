@@ -59,7 +59,8 @@
 		} else {
 			//document.getElementById("btnAdd").disabled = false;
 		}
-		document.getElementById("totpre").innerHTML = totale.toFixed(2);;
+		document.getElementById("totpre").innerHTML = totale.toFixed(2);
+		;
 	}
 	/*
 	function addQ() {
@@ -272,15 +273,17 @@ div.imgsec {
 										CategoryBean cat = (CategoryBean) it.next();
 										if (cat.getId_cat_padre() == 0) {
 							%>
-							<li class="item"><a href="Prodotti?categoria=<%=cat.getId_categoria()%>"><%=cat.getNome()%></a> <%
- 	Iterator<?> itera = categorie.iterator();
- 				int c = 0;
- 				while (itera.hasNext()) {
- 					CategoryBean figlio = (CategoryBean) itera.next();
- 					if (figlio.getId_cat_padre() == cat.getId_categoria()) {
- 						c++;
- 						if (c == 1) {
- %>
+							<li class="item"><a
+								href="Prodotti?categoria=<%=cat.getId_categoria()%>"><%=cat.getNome()%></a>
+								<%
+									Iterator<?> itera = categorie.iterator();
+												int c = 0;
+												while (itera.hasNext()) {
+													CategoryBean figlio = (CategoryBean) itera.next();
+													if (figlio.getId_cat_padre() == cat.getId_categoria()) {
+														c++;
+														if (c == 1) {
+								%>
 								<ul class="cute">
 									<%
 										}

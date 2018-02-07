@@ -108,7 +108,7 @@ public class ProductEdit extends HttpServlet {
 				// modelSize.ottieniTaglie());
 				request.setAttribute("carPro", modelCarPro.getCarPro(id));
 				request.setAttribute("immagini", modelImage.getProdImage(id));
-					// System.out.println("1");
+				// System.out.println("1");
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/productDetail.jsp");
 				dispatcher.forward(request, response);
 				return;

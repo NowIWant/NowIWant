@@ -38,7 +38,6 @@ public class ProductModel {
 
 	private static final String TABLE_NAME = " prodotti AS pro ";
 
-
 	public synchronized Collection<ProductBean> ottieniProdotti() throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -48,8 +47,7 @@ public class ProductModel {
 		String selectSQL = "SELECT pro.id_prodotto,pro.id_categoria,pro.nome,pro.descrizione,pro.prezzo,pro.date_add,cat.nome AS nomecategoria,cat.id_cat_padre , cpad.nome AS nomepadre"
 				+ ",(SELECT  immagine FROM immagini imm WHERE imm.id_prodotto = pro.id_prodotto LIMIT 1) AS immagine "
 				+ " FROM " + TABLE_NAME + " LEFT JOIN categorie cat ON pro.id_categoria = cat.id_categoria"
-				+ " LEFT JOIN categorie cpad ON cat.id_cat_padre = cpad.id_categoria "
-				+ "ORDER BY pro.date_add DESC "
+				+ " LEFT JOIN categorie cpad ON cat.id_cat_padre = cpad.id_categoria " + "ORDER BY pro.date_add DESC "
 				+ "LIMIT 4";
 
 		try {
@@ -353,8 +351,7 @@ public class ProductModel {
 
 		try {
 
-			String selectSQL = "SELECT quantita "
-					+ "FROM car_prodotti WHERE id_prodotto = ? AND BINARY taglia = ?";
+			String selectSQL = "SELECT quantita " + "FROM car_prodotti WHERE id_prodotto = ? AND BINARY taglia = ?";
 
 			conn = ds.getConnection();
 
@@ -363,10 +360,10 @@ public class ProductModel {
 			pstm.setString(2, taglia);
 			ResultSet rs = pstm.executeQuery();
 
-			while(rs.next()){
-				if(rs.getInt("quantita") >= quantita){
+			while (rs.next()) {
+				if (rs.getInt("quantita") >= quantita) {
 					return true;
-				}else{
+				} else {
 					return false;
 				}
 			}

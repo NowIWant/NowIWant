@@ -114,7 +114,6 @@ public class UserModel {
 		return utenti;
 	}
 
-
 	public UserBean registra(String nome, String cognome, String user, String pass) throws SQLException, Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -129,7 +128,7 @@ public class UserModel {
 			if (rs.next() == false) {
 
 				String insertSQL = "INSERT INTO utenti (nome,cognome,username,password) VALUES (?,?,?,?)";
-				
+
 				pstmt.close();
 				pstmt = conn.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS);
 

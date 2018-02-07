@@ -27,7 +27,7 @@
 						while (it.hasNext()) {
 							ProductBean bean = (ProductBean) it.next();
 				%>
-				<div class="col-sm-3"  style="padding-bottom: 2em;">
+				<div class="col-sm-3" style="padding-bottom: 2em;">
 					<div class="mid-pop">
 						<a href="Prodotto?ref=<%=bean.getId_prodotto()%>"> <img
 							style="margin-left: auto; margin-right: auto;"

@@ -54,7 +54,7 @@ public class CategoryControl extends HttpServlet {
 						String cat = request.getParameter("categoria");
 						int padre = Integer.parseInt(request.getParameter("padre"));
 						try {
-							model.addCat(cat,padre);
+							model.addCat(cat, padre);
 						} catch (Exception e) {
 							request.setAttribute("errore", e.getMessage());
 						}

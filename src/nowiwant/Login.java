@@ -23,7 +23,7 @@ public class Login extends HttpServlet {
 
 	static UserModel model = new UserModel();
 	static CartModel modelCart = new CartModel();
-	
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -50,10 +50,11 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if(request.getSession().getAttribute("utente") != null){
-			request.setAttribute("erroreLogin", "Ti sei già autenticato! Per entrare come nuovo utente effettua prima il logout.");
+		if (request.getSession().getAttribute("utente") != null) {
+			request.setAttribute("erroreLogin",
+					"Ti sei già autenticato! Per entrare come nuovo utente effettua prima il logout.");
 			doGet(request, response);
-		}else if (request.getParameter("username") != null && !request.getParameter("username").trim().equals("")
+		} else if (request.getParameter("username") != null && !request.getParameter("username").trim().equals("")
 				&& request.getParameter("password") != null && !request.getParameter("password").trim().equals("")) {
 
 			String user = request.getParameter("username").trim();
@@ -82,7 +83,7 @@ public class Login extends HttpServlet {
 				request.setAttribute("erroreLogin", "Username e/o password non corretti");
 				doGet(request, response);
 			}
-		}else{
+		} else {
 			doGet(request, response);
 		}
 	}

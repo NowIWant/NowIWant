@@ -57,7 +57,7 @@
  %><%=bean.getNomecategoria()%></span>
 									<h6>
 										<a href="Prodotto?ref=<%=bean.getId_prodotto()%>"><%=bean.getNome()%></a>
-										
+
 									</h6>
 									<div class="clearfix"></div>
 								</div>

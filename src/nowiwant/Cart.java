@@ -50,8 +50,8 @@ public class Cart extends HttpServlet {
 		String action = request.getParameter("action");
 		try {
 			if (action != null) {
-				if (request.getParameter("utente") != null && Integer.parseInt(request.getParameter("utente")) == utente.getId_utente()
-						) {
+				if (request.getParameter("utente") != null
+						&& Integer.parseInt(request.getParameter("utente")) == utente.getId_utente()) {
 					if (action.equals("saveCart")) {
 						Collection<?> carrello = (Collection<?>) request.getSession().getAttribute("carrello");
 						if (carrelloPieno(carrello)) {
@@ -67,7 +67,7 @@ public class Cart extends HttpServlet {
 							request.removeAttribute("erroreCarrello");
 							request.setAttribute("esatto", "Carrello salvato correttamente!");
 							request.getSession().setAttribute("cartAgg", 1);
-							
+
 						} else {
 
 							request.setAttribute("erroreCarrello", "Carrello vuoto!");

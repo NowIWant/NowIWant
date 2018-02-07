@@ -97,15 +97,17 @@
 											CategoryBean cat = (CategoryBean) it.next();
 											if (cat.getId_cat_padre() == 0) {
 								%>
-								<li class="item"><a href="Prodotti?categoria=<%=cat.getId_categoria()%>"><%=cat.getNome()%></a> <%
- 	Iterator<?> itera = categorie.iterator();
- 				int c = 0;
- 				while (itera.hasNext()) {
- 					CategoryBean figlio = (CategoryBean) itera.next();
- 					if (figlio.getId_cat_padre() == cat.getId_categoria()) {
- 						c++;
- 						if (c == 1) {
- %>
+								<li class="item"><a
+									href="Prodotti?categoria=<%=cat.getId_categoria()%>"><%=cat.getNome()%></a>
+									<%
+										Iterator<?> itera = categorie.iterator();
+													int c = 0;
+													while (itera.hasNext()) {
+														CategoryBean figlio = (CategoryBean) itera.next();
+														if (figlio.getId_cat_padre() == cat.getId_categoria()) {
+															c++;
+															if (c == 1) {
+									%>
 									<ul class="cute">
 										<%
 											}
@@ -143,39 +145,39 @@
 							<%
 								}
 							%>
-				<div class="col-sm-4" style="padding-bottom: 2em;" >
-					<div class="mid-pop">
-						<a href="Prodotto?ref=<%=bean.getId_prodotto()%>"> <img
-							style="margin-left: auto; margin-right: auto;"
-							src="images/prodotti/<%=bean.getFirstImm()%>"
-							class="img-responsive" alt="">
-						</a>
-						<div class="mid-1">
-							<div>
-								<div>
-									<span> <%
+							<div class="col-sm-4" style="padding-bottom: 2em;">
+								<div class="mid-pop">
+									<a href="Prodotto?ref=<%=bean.getId_prodotto()%>"> <img
+										style="margin-left: auto; margin-right: auto;"
+										src="images/prodotti/<%=bean.getFirstImm()%>"
+										class="img-responsive" alt="">
+									</a>
+									<div class="mid-1">
+										<div>
+											<div>
+												<span> <%
  	if (bean.getNomepadre() != null) {
  %><%=bean.getNomepadre()%> / <%
  	}
  %><%=bean.getNomecategoria()%></span>
-									<h6>
-										<a href="Prodotto?ref=<%=bean.getId_prodotto()%>"><%=bean.getNome()%></a>
-										
-									</h6>
-									<div class="clearfix"></div>
+												<h6>
+													<a href="Prodotto?ref=<%=bean.getId_prodotto()%>"><%=bean.getNome()%></a>
+
+												</h6>
+												<div class="clearfix"></div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+										<div class="mid-2">
+											<p>
+												<label>PREZZO</label><em class="item_price"><%=bean.getPrezzo()%>
+													&euro;</em>
+											</p>
+											<div class="clearfix"></div>
+										</div>
+									</div>
 								</div>
-								<div class="clearfix"></div>
 							</div>
-							<div class="mid-2">
-								<p>
-									<label>PREZZO</label><em class="item_price"><%=bean.getPrezzo()%>
-										&euro;</em>
-								</p>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				</div>
 							<%
 								c++;
 										if (c == 3) {

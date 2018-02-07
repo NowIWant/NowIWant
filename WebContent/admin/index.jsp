@@ -65,11 +65,7 @@
 				<%
 					if (prodotti != null && prodotti.size() != 0) {
 				%>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
+				<br> <br> <br> <br> <br>
 				<div class="panel-heading">Rimanenze</div>
 				<table class="tabler">
 					<thead>

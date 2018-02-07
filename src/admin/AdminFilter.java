@@ -16,15 +16,16 @@ import code.UserBean;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter(filterName = "AdminFilter", urlPatterns = { "/AddProduct","/Admin","/CategoryControl","/OrderControl","/ProductControl","/ProductEdit","/UploadImage","/UserControl"})
+@WebFilter(filterName = "AdminFilter", urlPatterns = { "/AddProduct", "/Admin", "/CategoryControl", "/OrderControl",
+		"/ProductControl", "/ProductEdit", "/UploadImage", "/UserControl" })
 public class AdminFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public AdminFilter() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public AdminFilter() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Filter#destroy()
@@ -36,11 +37,13 @@ public class AdminFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		//HttpServletResponse res = (HttpServletResponse) response;
+		// HttpServletResponse res = (HttpServletResponse) response;
 
-		if (req.getSession().getAttribute("utente") == null || ((UserBean) req.getSession().getAttribute("utente")).getAdmin() != 1) {
+		if (req.getSession().getAttribute("utente") == null
+				|| ((UserBean) req.getSession().getAttribute("utente")).getAdmin() != 1) {
 			req.setAttribute("erroreLogin", "Ci hai provato!");
 
 			RequestDispatcher dispatch = request.getRequestDispatcher("/CatMenuTop");

@@ -12,7 +12,7 @@ public class CartBean {
 	float prezzo;
 	float totprezzo;
 	String immagine;
-	
+
 	public String getUsername() {
 		return username;
 	}

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Servlet Filter implementation class LogFilter
  */
-@WebFilter(filterName = "LogFilter", urlPatterns = { "/Cart","/AddCart" })
+@WebFilter(filterName = "LogFilter", urlPatterns = { "/Cart", "/AddCart" })
 public class LogFilter implements Filter {
 
 	/**
@@ -39,7 +39,7 @@ public class LogFilter implements Filter {
 		// TODO Auto-generated method stub
 
 		HttpServletRequest req = (HttpServletRequest) request;
-		//HttpServletResponse res = (HttpServletResponse) response;
+		// HttpServletResponse res = (HttpServletResponse) response;
 
 		if (req.getSession().getAttribute("utente") == null) {
 			req.setAttribute("erroreLogin", "Non sei autenticato! Effettua prima il login.");
