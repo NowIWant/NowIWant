@@ -38,13 +38,17 @@ public class AddProduct extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String action = request.getParameter("action");
+		
 		try {
 			if (action != null) {
+				
 				if (action.equals("addProduct")) {
-					if (request.getParameter("nome") != null && !request.getParameter("nome").trim().equals("")
+					
+					if (request.getParameter("nome") != null 
+							&& !request.getParameter("nome").trim().equals("")
 							&& request.getParameter("descrizione") != null
 							&& !request.getParameter("descrizione").trim().equals("")
 							&& request.getParameter("prezzo") != null
@@ -52,32 +56,30 @@ public class AddProduct extends HttpServlet {
 							&& request.getParameter("categoria") != null
 							&& !request.getParameter("categoria").trim().equals("")) {
 
-						// RequestDispatcher dispatcher =
-						// getServletContext().getRequestDispatcher("/ImageControl");
-						// dispatcher.include(request, response);
-
 						String nome = request.getParameter("nome").trim();
 						String descrizione = request.getParameter("descrizione").trim();
 						float prezzo = Float.parseFloat(request.getParameter("prezzo"));
 						int categoria = Integer.parseInt(request.getParameter("categoria"));
-						// String immagini = request.getParameter("immagini");
-
+						int idProdotto;
 						ProductBean prodotto = new ProductBean();
+
 						prodotto.setNome(nome);
 						prodotto.setDescrizione(descrizione);
 						prodotto.setPrezzo(prezzo);
 						prodotto.setId_categoria(categoria);
 
-						int idProdotto;
 						try {
+							
 							idProdotto = modelPro.addProduct(prodotto);
 							String[] taglie = request.getParameterValues("taglia");
-							//String[] colori = request.getParameterValues("colore");
 							String[] quantita = request.getParameterValues("quantita");
 							modelCarPro.addCarPro(idProdotto, taglie, quantita);
 							response.sendRedirect("ProductControl");
+							
 							return;
+							
 						} catch (Exception e) {
+							
 							request.setAttribute("errore", "Errore con l'inserimento del prodotto nel database");
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -91,7 +93,6 @@ public class AddProduct extends HttpServlet {
 
 			request.setAttribute("selectCat", modelCat.ottieniCat());
 
-			//request.setAttribute("selectTaglie", modelSize.ottieniTaglie());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
