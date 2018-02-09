@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
-
+import Connessione.Connessione;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -83,7 +83,7 @@ public class CartModel {
 
 		String deleteSQL = "DELETE FROM carrelli WHERE id_utente = ?";
 		try {
-			conn = ds.getConnection();
+			conn = Connessione.getConnessione();
 			pstmt = conn.prepareStatement(deleteSQL);
 
 			pstmt.setInt(1, idutente);
@@ -413,7 +413,7 @@ public class CartModel {
 
 		String deleteSQL = "DELETE FROM carrelli WHERE id_utente = ?";
 		try {
-			conn = ds.getConnection();
+			conn = Connessione.getConnessione();
 			pstmt = conn.prepareStatement(deleteSQL);
 
 			pstmt.setInt(1, utente);

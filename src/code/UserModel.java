@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
-
+import Connessione.Connessione;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -41,7 +41,7 @@ public class UserModel {
 		String selectSQL = "SELECT id_utente, username, password, nome, cognome, admin FROM " + TABLE_NAME
 				+ "WHERE BINARY username = ? AND BINARY password = ?";
 		try {
-			conn = ds.getConnection();
+			conn = Connessione.getConnessione();
 			pstmt = conn.prepareStatement(selectSQL);
 			pstmt.setString(1, user);
 			pstmt.setString(2, pass);
@@ -120,7 +120,7 @@ public class UserModel {
 
 		String selectSQL = "SELECT username FROM " + TABLE_NAME + " WHERE BINARY username = ?";
 		try {
-			conn = ds.getConnection();
+			conn = Connessione.getConnessione();
 			pstmt = conn.prepareStatement(selectSQL);
 			pstmt.setString(1, user);
 			ResultSet rs = pstmt.executeQuery();
@@ -204,7 +204,7 @@ public class UserModel {
 
 		String deleteSQL = "DELETE FROM utenti WHERE id_utente = ?";
 		try {
-			conn = ds.getConnection();
+			conn = Connessione.getConnessione();
 
 			pstmt = conn.prepareStatement(deleteSQL);
 

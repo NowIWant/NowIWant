@@ -2,42 +2,49 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import code.CarProductModel;
-import code.CategoryModel;
 import code.ProductBean;
 import code.ProductModel;
 
 public class TestAddProduct {
-	
-	
-	private static CarProductModel cpm;
-	private static CategoryModel cm;
-	private static ProductBean pb;
-	private static ProductModel pm;
-	private static String nome;
-	private static String descrizione;
-	private static float prezzo;
-	private static int categoria;
-	private static int idProdotto;
-	private static ProductBean prodotto;
-	
+
+	private static ProductBean prodotto = new ProductBean();
+	static ProductModel modelPro = new ProductModel();
+	static int idProdotto;
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		
-		pm= new ProductModel();
-		cm= new CategoryModel();
-		pb= new ProductBean();
-		
+
+		prodotto.setNome("filippo");
+		prodotto.setDescrizione("ciao");
+		prodotto.setPrezzo(1);
+		prodotto.setId_categoria(1);
+
+		idProdotto = modelPro.addProduct(prodotto);
+
 	}
-	
 
 	@Test
-	public void testDoGetHttpServletRequestHttpServletResponse() {
-		
-		
+	public void test() throws SQLException {
+
+		prodotto = modelPro.infoProduct(idProdotto);
+		assertEquals(prodotto.getNome(), "filippo");
+		assertEquals(prodotto.getDescrizione(), "ciao");
+		assertEquals((int) prodotto.getPrezzo(), 1);
+		assertEquals(prodotto.getId_categoria(), 1);
+
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws SQLException {
+
+		modelPro.deleteProduct(idProdotto);
+
 	}
 
 }

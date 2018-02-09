@@ -11,6 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+import Connessione.Connessione;
 
 public class CategoryModel {
 
@@ -37,7 +38,7 @@ public class CategoryModel {
 
 		String selectSQL = "SELECT * FROM " + TABLE_NAME;
 		try {
-			conn = ds.getConnection();
+			conn = Connessione.getConnessione();
 			pstmt = conn.prepareStatement(selectSQL);
 
 			ResultSet rs = pstmt.executeQuery();
@@ -75,7 +76,7 @@ public class CategoryModel {
 				+ " LEFT JOIN categorie cpad ON cat.id_cat_padre = cpad.id_categoria WHERE CAT.id_categoria = "
 				+ id_categoria;
 		try {
-			conn = ds.getConnection();
+			conn = Connessione.getConnessione();
 			pstmt = conn.prepareStatement(selectSQL);
 
 			ResultSet rs = pstmt.executeQuery();
@@ -100,13 +101,42 @@ public class CategoryModel {
 		return bean;
 	}
 
+	public int getIdCat(int idCatPad, String nome) {
+
+		PreparedStatement pstmt = null;
+		Connection conn = null;
+		int idCat;
+		try {
+
+			String selectSQL = "SELECT id_categoria, id_cat_padre FROM categorie WHERE id_cat_padre = ? AND nome = ?";
+
+			conn = Connessione.getConnessione();
+			pstmt = conn.prepareStatement(selectSQL);
+			pstmt.setInt(1, idCatPad);
+			pstmt.setString(2, nome);
+			ResultSet rs = pstmt.executeQuery();
+
+			rs.next();
+
+			idCat = rs.getInt(1);
+
+			return idCat;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+
+	}
+
 	public void deleteCat(int id) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		String selectSQL = "SELECT id_categoria, id_cat_padre FROM categorie WHERE id_cat_padre = ?";
 		try {
-			conn = ds.getConnection();
+			conn = Connessione.getConnessione();
 			pstmt = conn.prepareStatement(selectSQL);
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
@@ -154,7 +184,7 @@ public class CategoryModel {
 		String insertSQL = "INSERT INTO categorie (nome, id_cat_padre) VALUES (?,?)";
 		try {
 
-			conn = ds.getConnection();
+			conn = Connessione.getConnessione();
 			pstmt = conn.prepareStatement(insertSQL);
 
 			pstmt.setString(1, nome);

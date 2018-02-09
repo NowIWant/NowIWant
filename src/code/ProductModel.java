@@ -14,6 +14,8 @@ import javax.sql.DataSource;
 
 import com.mysql.jdbc.Statement;
 
+import Connessione.Connessione;
+
 public class ProductModel {
 	/*
 	 * @Resource(name = "jdbc/nowiwant")
@@ -147,7 +149,7 @@ public class ProductModel {
 		try {
 			String insertSQL = "INSERT INTO prodotti (nome,descrizione,prezzo,id_categoria,date_add) VALUES (?,?,?,?,NOW())";
 
-			conn = ds.getConnection();
+			conn = Connessione.getConnessione();
 			pstmt = conn.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS);
 
 			pstmt.setString(1, prodotto.getNome());
@@ -183,7 +185,7 @@ public class ProductModel {
 		try {
 			String deleteSQL = "DELETE FROM prodotti WHERE id_prodotto = ?";
 
-			conn = ds.getConnection();
+			conn = Connessione.getConnessione();
 
 			pstmt = conn.prepareStatement(deleteSQL);
 
@@ -230,7 +232,7 @@ public class ProductModel {
 				+ " FROM " + TABLE_NAME + " LEFT JOIN categorie cat ON pro.id_categoria = cat.id_categoria"
 				+ " LEFT JOIN categorie cpad ON cat.id_cat_padre = cpad.id_categoria WHERE pro.id_prodotto = ?";
 		try {
-			conn = ds.getConnection();
+			conn = Connessione.getConnessione();
 			pstm = conn.prepareStatement(selectSQL);
 			pstm.setInt(1, id);
 			ResultSet rs = pstm.executeQuery();

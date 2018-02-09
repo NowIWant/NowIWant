@@ -38,17 +38,17 @@ public class AddProduct extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String action = request.getParameter("action");
-		
+
 		try {
 			if (action != null) {
-				
+
 				if (action.equals("addProduct")) {
-					
-					if (request.getParameter("nome") != null 
-							&& !request.getParameter("nome").trim().equals("")
+
+					if (request.getParameter("nome") != null && !request.getParameter("nome").trim().equals("")
 							&& request.getParameter("descrizione") != null
 							&& !request.getParameter("descrizione").trim().equals("")
 							&& request.getParameter("prezzo") != null
@@ -69,17 +69,17 @@ public class AddProduct extends HttpServlet {
 						prodotto.setId_categoria(categoria);
 
 						try {
-							
+
 							idProdotto = modelPro.addProduct(prodotto);
 							String[] taglie = request.getParameterValues("taglia");
 							String[] quantita = request.getParameterValues("quantita");
 							modelCarPro.addCarPro(idProdotto, taglie, quantita);
 							response.sendRedirect("ProductControl");
-							
+
 							return;
-							
+
 						} catch (Exception e) {
-							
+
 							request.setAttribute("errore", "Errore con l'inserimento del prodotto nel database");
 							// TODO Auto-generated catch block
 							e.printStackTrace();
