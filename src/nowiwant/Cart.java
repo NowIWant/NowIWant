@@ -42,10 +42,7 @@ public class Cart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		/*
-		 * if (request.getSession().getAttribute("utente") != null &&
-		 * !request.getSession().getAttribute("utente").equals("")) {
-		 */
+
 		UserBean utente = (UserBean) request.getSession().getAttribute("utente");
 		String action = request.getParameter("action");
 		try {
@@ -180,14 +177,7 @@ public class Cart extends HttpServlet {
 		dispatcher = getServletContext().getRequestDispatcher("/carrello.jsp");
 		dispatcher.forward(request, response);
 		return;
-		/*
-		 * } else { request.setAttribute("erroreLogin",
-		 * "Per effettuare gli acquisti devi essere registrato.");
-		 * 
-		 * RequestDispatcher dispatcher =
-		 * getServletContext().getRequestDispatcher("/Login");
-		 * dispatcher.forward(request, response); return; }
-		 */
+
 	}
 
 	/**

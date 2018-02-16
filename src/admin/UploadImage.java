@@ -40,7 +40,7 @@ public class UploadImage extends HttpServlet {
 	DateFormat df = new SimpleDateFormat("ddMMyyyHHmmssSSS");
 
 	public void init() {
-		// get the file location where it would be stored
+
 		SAVE_DIR = getServletConfig().getInitParameter("file-upload");
 	}
 
@@ -69,16 +69,13 @@ public class UploadImage extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// PrintWriter out = response.getWriter();
-		// response.setContentType("text/plain");
-
 		String savePath = request.getServletContext().getRealPath("") + SAVE_DIR;
 
 		File fileSaveDir = new File(savePath);
 		if (!fileSaveDir.exists()) {
 			fileSaveDir.mkdir();
 		}
-		// String message = "upload =\n";
+
 		if (request.getParts() != null && request.getParts().size() > 0) {
 			List<String> immagini = new ArrayList<String>();
 			for (Part part : request.getParts()) {
@@ -86,13 +83,7 @@ public class UploadImage extends HttpServlet {
 				if (fileName != null && !fileName.equals("")) {
 					immagini.add(fileName);
 					part.write(savePath + File.separator + fileName);
-					// System.out.println(savePath + File.separator + fileName);
-					// message += fileName + "\n";
-				} else {
-					// request.setAttribute("error", "Errore: Bisogna
-					// selezionare almeno un file");
-					// System.out.println("Errore: Bisogna selezionare almeno un
-					// file");
+
 				}
 			}
 
@@ -114,32 +105,18 @@ public class UploadImage extends HttpServlet {
 
 		}
 		response.sendRedirect("Home");
-		// out.close();
 
-		// request.setAttribute("message", message);
-
-		// RequestDispatcher dispatcher =
-		// getServletContext().getRequestDispatcher("/index.jsp");
-		// dispatcher.forward(request, response);
-
-		// TODO Auto-generated method stub
-		// doGet(request, response);
 	}
 
 	private String extractFileName(Part part) {
-		// content-disposition: form-data; name="file"; filename="file.txt"
+
 		String contentDisp = part.getHeader("content-disposition");
-		// System.out.println(part.getName().substring(part.getName().indexOf("-")
-		// + 1, part.getName().length()));
-		/*
-		 * System.out.println(part.getSubmittedFileName());
-		 * System.out.println(part.toString());
-		 */
+
 		String[] items = contentDisp.split(";");
 		for (String s : items) {
 			if (s.trim().startsWith("filename")) {
 				return df.format(new Date()) + s.substring(s.length() - 5, s.length() - 1);
-				// return s.substring(s.indexOf("=") + 2, s.length() - 1);
+
 			}
 		}
 		return "";

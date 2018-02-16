@@ -40,19 +40,12 @@ public class CatMenuTop extends HttpServlet {
 
 			request.setAttribute("catMenuTop", model.ottieniCat());
 			return;
-			// System.out.println("INTERROGATO DATABASE PER CATEGORIE");
-			/*
-			 * if (request.getParameter("page") != null) { RequestDispatcher dispatcher =
-			 * getServletContext().getRequestDispatcher(request.getParameter("page"));
-			 * dispatcher.forward(request, response); }
-			 */
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// RequestDispatcher dispatcher =
-		// getServletContext().getRequestDispatcher(pag);
-		// dispatcher.forward(request, response);
+
 	}
 
 	/**

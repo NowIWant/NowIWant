@@ -77,9 +77,7 @@ public class Login extends HttpServlet {
 				request.getSession().setAttribute("utente", utente);
 				response.sendRedirect("Home");
 			} else {
-				// RequestDispatcher dispatcher =
-				// getServletContext().getRequestDispatcher("/CatMenuTop");
-				// dispatcher.include(request, response);
+
 				request.setAttribute("erroreLogin", "Username e/o password non corretti");
 				doGet(request, response);
 			}

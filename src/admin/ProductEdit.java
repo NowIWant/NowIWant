@@ -74,10 +74,7 @@ public class ProductEdit extends HttpServlet {
 							String[] taglie = request.getParameterValues("taglia");
 							String[] quantita = request.getParameterValues("quantita");
 							modelCarPro.addCarPro(id, taglie, quantita);
-							// RequestDispatcher dispatcher =
-							// getServletContext().getRequestDispatcher("/admin/productDetail.jsp");
-							// dispatcher.forward(request, response);
-							// return;
+
 						} catch (Exception e) {
 							request.setAttribute("errore", "Errore con l'aggiornamento del prodotto nel database");
 							// TODO Auto-generated catch block
@@ -92,11 +89,9 @@ public class ProductEdit extends HttpServlet {
 					modelImage.deleteImage(idImage);
 					File file = new File(request.getServletContext().getRealPath("") + "images\\prodotti\\"
 							+ request.getParameter("image"));
-					// System.out.println(file.exists());
+
 					Files.deleteIfExists(file.toPath());
-					// response.sendRedirect("ProductEdit?id=" +
-					// request.getParameter("id"));
-					// return;
+
 				}
 			}
 			if (request.getParameter("id") != null && !request.getParameter("id").equals("")) {
@@ -104,11 +99,10 @@ public class ProductEdit extends HttpServlet {
 				request.setAttribute("prodotto", model.infoProduct(id));
 
 				request.setAttribute("selectCat", modelCat.ottieniCat());
-				// request.setAttribute("selectTaglie",
-				// modelSize.ottieniTaglie());
+
 				request.setAttribute("carPro", modelCarPro.getCarPro(id));
 				request.setAttribute("immagini", modelImage.getProdImage(id));
-				// System.out.println("1");
+
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/productDetail.jsp");
 				dispatcher.forward(request, response);
 				return;

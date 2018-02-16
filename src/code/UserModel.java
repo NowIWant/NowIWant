@@ -94,7 +94,6 @@ public class UserModel {
 				UserBean bean = new UserBean();
 				bean.setId_utente(rs.getInt("id_utente"));
 				bean.setUsername(rs.getString("username"));
-				// bean.setPassword(rs.getString("password"));
 				bean.setNome(rs.getString("nome"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setAdmin(rs.getInt("admin"));

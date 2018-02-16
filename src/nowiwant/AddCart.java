@@ -41,10 +41,7 @@ public class AddCart extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		/*
-		 * if (request.getSession().getAttribute("utente") != null &&
-		 * !request.getSession().getAttribute("utente").equals("")) {
-		 */
+
 		try {
 			if (modelProduct.checkQuaPro(Integer.parseInt(request.getParameter("ref")),
 					Integer.parseInt(request.getParameter("quantita")), request.getParameter("taglia"))) {
@@ -90,12 +87,7 @@ public class AddCart extends HttpServlet {
 				}
 				request.getSession().setAttribute("carrello", carrello);
 				request.getSession().setAttribute("cartAgg", 0);
-				// RequestDispatcher dispatcher =
-				// getServletContext().getRequestDispatcher("/Prodotto?ref="
-				// + ref);
-				// dispatcher.forward(request, response);
 
-				// return;
 			} else {
 				request.setAttribute("errore", "La quantità del prodotto non è disponibile.");
 			}
@@ -103,14 +95,7 @@ public class AddCart extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		/*
-		 * } else { request.setAttribute("erroreLogin",
-		 * "Per effettuare gli acquisti devi essere registrato.");
-		 * 
-		 * RequestDispatcher dispatcher =
-		 * getServletContext().getRequestDispatcher("/Login");
-		 * dispatcher.forward(request, response); return; }
-		 */
+
 		response.sendRedirect("Cart");
 	}
 

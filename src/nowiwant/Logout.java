@@ -48,11 +48,7 @@ public class Logout extends HttpServlet {
 		}
 		request.getSession().removeAttribute("utente");
 		request.getSession().invalidate();
-		/*
-		 * String page = request.getParameter("page"); if (page == null) {
-		 */
-		// String page = request.getContextPath() + "/index.jsp";
-		// }
+
 		response.sendRedirect("Home");
 	}
 

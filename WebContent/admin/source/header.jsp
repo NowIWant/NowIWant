@@ -2,12 +2,6 @@
 	pageEncoding="UTF-8" import="java.util.*,code.UserBean"%>
 <%
 	UserBean user = (UserBean) request.getSession().getAttribute("utente");
-	/*
-		if ((user == null) || (user.getAdmin() != 1)) {
-			response.sendRedirect(request.getContextPath() + "/index.jsp");
-			return;
-		}
-		*/
 %>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container-fluid">

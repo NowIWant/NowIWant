@@ -99,7 +99,7 @@ public class CarProductModel {
 				bean.setId_car_prodotto(rs.getInt("id_car_prodotto"));
 				bean.setId_prodotto(rs.getInt("id_prodotto"));
 				bean.setTaglia(rs.getString("taglia"));
-				// bean.setColore(rs.getString("colore"));
+
 				bean.setQuantita(rs.getInt("quantita"));
 
 				caratteristiche.add(bean);

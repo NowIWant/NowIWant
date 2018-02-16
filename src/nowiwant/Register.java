@@ -48,7 +48,7 @@ public class Register extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// doGet(request, response);
+
 		if (request.getSession().getAttribute("utente") != null) {
 			request.setAttribute("erroreLogin",
 					"Ti sei già autenticato! Per registrarti come nuovo utente effettua prima il logout.");

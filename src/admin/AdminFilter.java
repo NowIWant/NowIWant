@@ -40,7 +40,6 @@ public class AdminFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		// HttpServletResponse res = (HttpServletResponse) response;
 
 		if (req.getSession().getAttribute("utente") == null
 				|| ((UserBean) req.getSession().getAttribute("utente")).getAdmin() != 1) {
@@ -52,7 +51,7 @@ public class AdminFilter implements Filter {
 			dispatch.forward(request, response);
 			return;
 		}
-		// pass the request along the filter chain
+
 		chain.doFilter(request, response);
 	}
 

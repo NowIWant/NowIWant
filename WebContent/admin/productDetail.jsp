@@ -5,16 +5,6 @@
 	ProductBean prodotto = (ProductBean) request.getAttribute("prodotto");
 	Collection<?> carPro = (Collection<?>) request.getAttribute("carPro");
 	Collection<?> immagini = (Collection<?>) request.getAttribute("immagini");
-	/*
-		String selectTaglie = "";
-		if (taglie != null && !taglie.equals("")) {
-			Iterator<?> it = taglie.iterator();
-			while (it.hasNext()) {
-				SizeBean size = (SizeBean) it.next();
-				selectTaglie = selectTaglie + "<option>" + size.getDescrizione() + "</option>";
-			}
-		}
-		*/
 %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -86,12 +76,7 @@
 						//"<img src="+e.target.result+"class=\"thumb-image\" />".appendTo(image_holder);
 						image_holder.innerHTML = image_holder.innerHTML
 								+ ("<img src=\""+e.target.result+"\"class=\"thumb-image\" />");
-						/*
-						$("<img />", {
-							"src" : e.target.result,
-							"class" : "thumb-image"
-						}).appendTo(image_holder);
-						 */
+
 					}
 					//image_holder.show();
 					reader.readAsDataURL(finput.files[i]);
@@ -103,55 +88,6 @@
 			alert("Si prega di selezionare solo immagini.");
 		}
 	}
-	/*
-	 $(document)
-	 .ready(
-	 function() {
-	 $("#fileUpload")
-	 .on(
-	 'change',
-	 function() {
-	 //Get count of selected files
-	 var countFiles = $(this)[0].files.length;
-	 var imgPath = $(this)[0].value;
-	 var extn = imgPath
-	 .substring(
-	 imgPath
-	 .lastIndexOf('.') + 1)
-	 .toLowerCase();
-	 var image_holder = $("#image-holder");
-	 image_holder.empty();
-	 if (extn == "gif" || extn == "png"
-	 || extn == "jpg"
-	 || extn == "jpeg") {
-	 if (typeof (FileReader) != "undefined") {
-	 //loop for each file selected for uploaded.
-	 for (var i = 0; i < countFiles; i++) {
-	 var reader = new FileReader();
-	 reader.onload = function(
-	 e) {
-	 $(
-	 "<img />",
-	 {
-	 "src" : e.target.result,
-	 "class" : "thumb-image"
-	 })
-	 .appendTo(
-	 image_holder);
-	 }
-	 image_holder.show();
-	 reader
-	 .readAsDataURL($(this)[0].files[i]);
-	 }
-	 } else {
-	 alert("This browser does not support FileReader.");
-	 }
-	 } else {
-	 alert("Pls select only images");
-	 }
-	 });
-	 });
-	 */
 </script>
 </head>
 <body>

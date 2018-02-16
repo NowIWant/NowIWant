@@ -62,8 +62,7 @@ public class ProductControl extends HttpServlet {
 						model.deleteProduct(id);
 						modelImage.deleteAllProdImage(id);
 						modelCart.deleteProd(id);
-						// response.sendRedirect("ProductControl");
-						// return;
+
 					}
 				}
 			}

@@ -39,7 +39,6 @@ public class LogFilter implements Filter {
 		// TODO Auto-generated method stub
 
 		HttpServletRequest req = (HttpServletRequest) request;
-		// HttpServletResponse res = (HttpServletResponse) response;
 
 		if (req.getSession().getAttribute("utente") == null) {
 			req.setAttribute("erroreLogin", "Non sei autenticato! Effettua prima il login.");

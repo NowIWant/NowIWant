@@ -17,13 +17,7 @@ import com.mysql.jdbc.Statement;
 import Connessione.Connessione;
 
 public class ProductModel {
-	/*
-	 * @Resource(name = "jdbc/nowiwant")
-	 * 
-	 * @Resource(lookup = "java:comp/env/jdbc/nowiwant")
-	 * 
-	 * private static DataSource ds;
-	 */
+
 	private static DataSource ds;
 
 	static {
@@ -53,7 +47,7 @@ public class ProductModel {
 				+ "LIMIT 4";
 
 		try {
-			connection = ds.getConnection();
+			connection = Connessione.getConnessione();
 			preparedStatement = connection.prepareStatement(selectSQL);
 
 			ResultSet rs = preparedStatement.executeQuery();
@@ -244,13 +238,7 @@ public class ProductModel {
 				bean.setNome(rs.getString("nome"));
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setPrezzo(rs.getFloat("prezzo"));
-				// bean.setFirstImm(rs.getString("immagine"));
-				// if (rs.wasNull()) {
-				// bean.setFirstImm("noimage.png");
-				// }
-				// bean.setNomecategoria(rs.getString("nomecategoria"));
-				// bean.setId_cat_padre(rs.getInt("id_cat_padre"));
-				// bean.setNomepadre(rs.getString("nomepadre"));
+
 			}
 		} finally {
 			try {
