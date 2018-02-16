@@ -38,7 +38,8 @@ public class CartModel {
 		int c = id_prodotto.length;
 		try {
 
-			String selectSQL = "SELECT pro.nome,pro.prezzo,(SELECT  immagine FROM immagini imm WHERE imm.id_prodotto = pro.id_prodotto LIMIT 1) AS immagine FROM prodotti pro WHERE pro.id_prodotto = ?";
+			String selectSQL = "SELECT pro.nome,pro.prezzo,(SELECT  immagine FROM immagini imm "
+					+ "WHERE imm.id_prodotto = pro.id_prodotto LIMIT 1) AS immagine FROM prodotti pro WHERE pro.id_prodotto = ?";
 
 			conn = ds.getConnection();
 			for (int i = 0; i < c; i++) {
