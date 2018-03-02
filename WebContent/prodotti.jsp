@@ -190,7 +190,7 @@
 						<%
 							}
 							} else {
-						%><h3>Non ci sono prodotti in questa categoria attualmente.</h3>
+						%><h3>Non ci sono prodotti in questa categoria.</h3>
 						<%
 							}
 						%>

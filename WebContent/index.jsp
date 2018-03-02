@@ -77,7 +77,7 @@
 					}
 					} else {
 				%>
-				<h3>Non abbiamo ultimi arrivi.</h3>
+				<h3>Non ci sono ultimi arrivi.</h3>
 
 				<%
 					}

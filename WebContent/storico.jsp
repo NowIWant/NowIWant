@@ -59,7 +59,7 @@
 			} else {
 		%>
 		<hr>
-		<h1>Non hai ancora acquistato nulla! Dai spendi i soldini :)</h1>
+		<h1>Non hai ancora acquistato nulla, aggiungi almeno un prodotto per acquistare</h1>
 		<hr>
 		<%
 			}

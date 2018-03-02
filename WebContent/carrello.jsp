@@ -124,7 +124,7 @@
 			} else {
 		%>
 		<hr>
-		<h1>Non hai prodotti nel carrello! Dai spendi i soldini :)</h1>
+		<h1>Non hai prodotti nel carrello, aggiungi almeno un prodotto per acquistare</h1>
 		<hr>
 		<%
 			}
