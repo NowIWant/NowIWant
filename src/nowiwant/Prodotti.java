@@ -39,6 +39,7 @@ public class Prodotti extends HttpServlet {
 			throws ServletException, IOException {
 		if (request.getParameter("categoria") != null && !request.getParameter("categoria").equals("")) {
 			try {
+				//dal db alla sessione
 				int cat = Integer.parseInt(request.getParameter("categoria"));
 				request.setAttribute("infoCat", modelCategory.infoCat(cat));
 				request.setAttribute("catMenuTop", modelCategory.ottieniCat());

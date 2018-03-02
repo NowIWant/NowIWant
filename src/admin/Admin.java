@@ -16,6 +16,7 @@ import code.CartModel;
 /**
  * Servlet implementation class Admin
  */
+//pagina principale dell'admin
 @WebServlet("/Admin")
 public class Admin extends HttpServlet {
 	private static final long serialVersionUID = 1L;

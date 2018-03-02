@@ -62,6 +62,7 @@ public class AddCart extends HttpServlet {
 						CartBean bean = (CartBean) it.next();
 						if (bean.getId_prodotto() == Integer.parseInt(request.getParameter("ref"))
 								&& bean.getTaglia().equals(request.getParameter("taglia"))) {
+							//update della quantità se il prodotto è gia prensente nel carrello
 							bean.setQuantita(Integer.parseInt(request.getParameter("quantita")));
 							request.setAttribute("aggiunto", "Aggiornata quantità del prodotto nel carrello.");
 							ins = true;

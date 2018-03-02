@@ -32,6 +32,7 @@ public class CatMenuTop extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	//aggiorna le categorie
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.removeAttribute("catMenuTop");

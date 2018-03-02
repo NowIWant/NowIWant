@@ -75,7 +75,7 @@ public class AddProduct extends HttpServlet {
 							String[] quantita = request.getParameterValues("quantita");
 							modelCarPro.addCarPro(idProdotto, taglie, quantita);
 							response.sendRedirect("ProductControl");
-
+								//nel lato client fa il redirect sulla servlet prodcontrol
 							return;
 
 						} catch (Exception e) {
@@ -100,6 +100,7 @@ public class AddProduct extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/addProduct.jsp");
 		dispatcher.forward(request, response);
 		return;
+		//chiama  una pagina jsp mandandogli request e response
 	}
 
 	/**

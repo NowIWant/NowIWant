@@ -39,6 +39,7 @@ public class AdminFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		//filtro per entrare nelle servlet dell'admin controlla se l'utende è loggato e se è admin
 		HttpServletRequest req = (HttpServletRequest) request;
 
 		if (req.getSession().getAttribute("utente") == null

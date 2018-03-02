@@ -68,6 +68,7 @@ public class Login extends HttpServlet {
 			}
 			if (utente != null && !utente.equals("")) {
 				try {
+					// carico il carrello dal db nella sessione
 					request.getSession().setAttribute("carrello", modelCart.getCart(utente.getId_utente()));
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block

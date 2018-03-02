@@ -55,6 +55,7 @@ public class Cart extends HttpServlet {
 
 							model.saveCart(utente.getId_utente(), carrello);
 							request.getSession().removeAttribute("carrello");
+							// carrello salvato nel db ed eliminato dalla sessione
 							try {
 								request.getSession().setAttribute("carrello", model.getCart(utente.getId_utente()));
 							} catch (SQLException e) {
@@ -76,6 +77,8 @@ public class Cart extends HttpServlet {
 							model.saveCart(utente.getId_utente(), carrello);
 
 							try {
+								// controlla se le quantità dei prodotti presenti nel carrello sono ancora
+								// disponibili
 								if (carrello.size() == model.checkQuan(utente.getId_utente())) {
 									model.saveAcquisti(utente.getId_utente(), carrello);
 									request.getSession().removeAttribute("carrello");
@@ -99,25 +102,33 @@ public class Cart extends HttpServlet {
 						if (carrelloPieno(carrello)) {
 							request.getSession().removeAttribute("carrello");
 							model.deleteCart(utente.getId_utente());
-							request.getSession().setAttribute("cartAgg", 1);
+							request.getSession().setAttribute("cartAgg", 1); // flag
 						} else {
 							request.setAttribute("erroreCarrello", "Carrello vuoto!");
 						}
 
 					} else if (action.equals("delProd")) {
-						Collection<?> carrelloOld = (Collection<?>) request.getSession().getAttribute("carrello");
-						if (carrelloPieno(carrelloOld)) {
-							Collection<CartBean> carrello = new ArrayList<CartBean>();
+						Collection<?> carrello = (Collection<?>) request.getSession().getAttribute("carrello");
 
-							int id = Integer.parseInt(request.getParameter("id"));
-							String taglia = request.getParameter("taglia");
-							Iterator<?> it = carrelloOld.iterator();
-							while (it.hasNext()) {
-								CartBean bean = (CartBean) it.next();
-								if (id != bean.getId_prodotto() || !taglia.equals(bean.getTaglia())) {
-									carrello.add(bean);
+						CartBean[] foos = carrello.toArray(new CartBean[carrello.size()]);
+						int id = Integer.parseInt(request.getParameter("id"));
+						if (carrelloPieno(carrello)) {
+
+							for (CartBean bean : foos) {
+								if (id == bean.getId_prodotto()) {
+									carrello.remove(bean);
 								}
 							}
+
+							/*
+							 * Collection<CartBean> carrello = new ArrayList<CartBean>();
+							 * 
+							 * int id = Integer.parseInt(request.getParameter("id")); String taglia =
+							 * request.getParameter("taglia"); Iterator<?> it = carrelloOld.iterator();
+							 * while (it.hasNext()) { CartBean bean = (CartBean) it.next(); if (id !=
+							 * bean.getId_prodotto() || !taglia.equals(bean.getTaglia())) {
+							 * carrello.add(bean); } }
+							 */
 							request.getSession().setAttribute("carrello", carrello);
 							request.getSession().setAttribute("cartAgg", 0);
 							response.sendRedirect("Cart");

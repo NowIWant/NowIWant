@@ -204,7 +204,7 @@ public class CartModel {
 			pstm = conn.prepareStatement(selectSQL);
 			pstm.setInt(1, id_user);
 			ResultSet rs = pstm.executeQuery();
-
+				
 			rs.last();
 			n = rs.getRow();
 
