@@ -31,7 +31,6 @@ public class TestAddCat {
 
 		cb = model.infoCat(idCat);
 
-		System.out.println(idCat);
 
 		assertEquals(cb.getId_cat_padre(), 1);
 		assertEquals(cb.getNome(), "bombe");
