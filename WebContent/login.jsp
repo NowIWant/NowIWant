@@ -81,26 +81,31 @@
 			<form action="Register" onsubmit="return controlloReg(this);"
 				method="post">
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Nome:</label> <input
+					<label class="col-sm-2 control-label">Nome*:</label> <input
 						class="form-control" type="text" name="nome" value="" required>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Cognome:</label> <input
+					<label class="col-sm-2 control-label">Cognome*:</label> <input
 						class="form-control" type="text" name="cognome" value="" required>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">Username:</label> <input
+					<label class="col-sm-2 control-label">Username*:</label> <input
 						class="form-control" type="text" name="user" value="" required>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Password:</label> <input
 						class="form-control" type="password" name="pass" value="" required>
 				</div>
+				<div class="form-group">
+					<label> *Caratteri non consentiti (£, $, %, ?, ), (, ^, °,
+						§, #)</label>
+				</div>
 
 				<div style="text-align: center;">
 					<input class="btn btn-lg btn-success" type="submit"
 						value="Registrati">
 				</div>
+
 			</form>
 		</div>
 	</div>
