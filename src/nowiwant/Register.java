@@ -48,7 +48,7 @@ public class Register extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		boolean controlUsername, controlName, controlSurname;
 		if (request.getSession().getAttribute("utente") != null) {
 			request.setAttribute("erroreLogin",
 					"Ti sei già autenticato! Per registrarti come nuovo utente effettua prima il logout.");
@@ -60,8 +60,13 @@ public class Register extends HttpServlet {
 			String user = request.getParameter("user").trim();
 			String pass = request.getParameter("pass").trim();
 
+			controlUsername = controlloStringa(user);
+			controlName = controlloStringa(nome);
+			controlSurname = controlloStringa(cognome);
+
 			if (nome != null && !nome.equals("") && cognome != null && !cognome.equals("") && user != null
-					&& !user.equals("") && pass != null && !pass.equals("")) {
+					&& controlSurname != false && controlName != false && controlUsername != false && !user.equals("")
+					&& pass != null && !pass.equals("")) {
 				UserBean utente;
 				try {
 					utente = model.registra(nome, cognome, user, pass);
@@ -77,6 +82,23 @@ public class Register extends HttpServlet {
 			}
 		}
 
+	}
+
+	public boolean controlloStringa(String username) {
+
+		String array[] = username.split("");
+		boolean b = true;
+		for (int i = 0; i < array.length; i++) {
+
+			if (array[i].equals("$") || array[i].equals("&") || array[i].equals("%") || array[i].equals("£")
+					|| array[i].equals("(") || array[i].equals(")") || array[i].equals("=") || array[i].equals("?")
+					|| array[i].equals("^") || array[i].equals("#") || array[i].equals("§") || array[i].equals("°"))
+
+				b = false;
+
+		}
+
+		return b;
 	}
 
 }
